@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        letter-spacing: 2px;
+        font-family: sans-serif;
+        text-transform: uppercase;
+      }
+      body{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+      }
+      .container{
+        width: 1000px;
+        height: auto;
+        background: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        overflow-y: auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-top: 15px;
+        
+      }
+      #input_data{
+        width: 100%;
+        height: 50px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        background: #6cd5f2;
+        color: #060505;
+        padding: 0px 10px;
+        margin:  15px 0px;
+
+      }
+      #input_data::placeholder
+      {
+        color: rgb(4, 4, 1);
+      } 
+      ul li{
+        background: #eee;
+        color: #333;
+        height: 50px;
+        border-radius: 5px;
+        margin: 15px 0px;
+        padding: 15px;
+        position: relative;
+      }
+      ul .fa-check ,.fa-trash{
+        position: absolute;
+        cursor: pointer;
+
+      }
+      ul .fa-check{
+        right: 40px;
+        color: blue;
+      }
+      ul .fa-trash{
+        right: 15px;
+        color: green;
+      }
+      ul .addClass{
+        background: rgb(147, 152, 153);
+        transition: .2s;
+        color: white;
+
+      }
+      .main_header{
+        text-align: center;
+        font-size: 30px;
+        font-family: sans-serif;
+        padding: 10px 0px;
+      }
+     
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <!-- -------jquery library cdn link is here --------------- -->
+</head>
+<body>
+    
+    <div class="container">
+        <div class="main_header"> welcome to kapil Todo List</div>
+        <input type="text" name="" id="input_data" placeholder=" enter a text to add list">
+        <ul></ul>
+    </div>
+    <script> 
+    //first we are append value in li 
+        $(document).ready(function(){
+          $('#input_data').change(function(){
+            var input = $(this).val();
+            $('ul').append('<li>'+ input  +'<i class="fa fa-check"></i> <i class="fa fa-trash"></i>  </li>');
+            $(this).val();
+          });
+          //when click then fade out delete button
+          $('ul').on('click','.fa-trash',function(){
+             $(this).parent('li').fadeOut(200);
+          });
+          //when click one class is added name is checked
+          $('ul').on('click','.fa-check',function(){
+             $(this).parent('li').toggleClass('addClass');
+          });
+        });
+    </script>
+    
+</body>
+</html>
